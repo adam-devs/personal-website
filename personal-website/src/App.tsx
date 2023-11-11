@@ -1,70 +1,43 @@
+import { useState, useEffect } from "react";
 import "./App.css";
+import Home from "./Home";
+import useScrollPosition from "./useScrollPosition";
+
+enum Screen {
+  Home = "home",
+  About = "about",
+  Projects = "projects",
+}
+
+const divider = () => {
+  return (
+    <div className="w-2/3 self-center ml-auto mr-auto h-[1px] bg-gray-300" />
+  );
+};
 
 function App() {
-  return (
-    <>
-      <div className="Landing bg-orange-100 w-full min-h-screen font-playfair">
-        <div className="flex justify-around py-10 px-5 sm:p-10 text-xl">
-          <p>About Me</p>
-          <p>Projects</p>
-          <p>Photography</p>
-        </div>
-        <div className="p-10 space-y-7 sm:space-y-9 flex flex-col sm:p-36 sm:text-left text-yellow-950">
-          <h1 className="font-extrabold text-7xl sm:text-[10rem]">
-            Adam Alilou
-          </h1>
-          <div className="font-semibold text-3xl sm:text-5xl">
-            <p>Student based in London.</p>
-          </div>
-          <div className="flex flex-col text-3xl sm:text-5xl sm:space-y-5 pt-20">
-            <a
-              href="https://twitter.com/AdamAIiIou"
-              target="_blank"
-              className="hover:underline hover:text-blue-400 w-fit"
-            >
-              Twitter.
-            </a>
-            <a
-              href="https://github.com/adam-devs"
-              target="_blank"
-              className=" hover:underline hover:text-black w-fit"
-            >
-              GitHub.
-            </a>
-            <a
-              href="https://www.linkedin.com/in/adamalilou/"
-              target="_blank"
-              className=" hover:underline hover:text-blue-700 w-fit"
-            >
-              LinkedIn.
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="History bg-white h-screen font-playfair p-10 sm:p-36">
-        <div className="font text-3xl sm:text-5xl space-y-20 ">
-          <div>
-            <h2 className="text-5xl sm:text-7xl">2023</h2>
-            <p>
-              Currently on a 6 month placement with{" "}
-              <span className="highlight-green">BNP Paribas</span>. Working in
-              the Global Markets team as a frontend developer.
-            </p>
-          </div>
+  const [screen, updateScreen] = useState(Screen.Home);
+  const position = useScrollPosition();
 
-          <div>
-            <h2 className="text-5xl sm:text-7xl">2020 - 2024</h2>
-            <p>
-              Studying Computing (Security and Reliability MEng) at{" "}
-              <span className="highlight-blue">Imperial College London</span>.
-            </p>
-          </div>
+  return (
+    <div className="bg-orange-50 text-gray-700">
+      <div className="fixed flex-column w-full">
+        <div className="flex w-full flex-row space-x-4 h-16 px-[350px] backdrop-blur-xl">
+          <div className="ml-auto p-5 opacity-10">About</div>
+          <div className="p-5 opacity-10">Projects</div>
         </div>
+
+        {position !== 0 && divider()}
       </div>
-      <div className=" text-center p-5">
-        Website in the process of a redesign
+      <div className="bg-white">
+        {screen == Screen.Home && <Home />}
+        <div className="text-center text-gray-500 m-2">
+          Site under construction 🚧
+        </div>
+
+        <div className="text-center text-gray-300 m-2">© Adam Alilou</div>
       </div>
-    </>
+    </div>
   );
 }
 

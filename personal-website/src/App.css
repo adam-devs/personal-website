@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+::selection {
+  color: rgb(255, 0, 195);
+  background: rgb(255, 201, 233);
+}
 
 /* #root {
   max-width: 1280px;
