@@ -18,7 +18,7 @@ const Experience = (info: Info, swap = false) => {
 
   const details = (
     <>
-      <div className={`text-4xl text-${info.colour}-500`}>{info.name}</div>
+      <div className={`text-4xl ${info.colour}`}>{info.name}</div>
       <div className="text-2xl">{info.desc}</div>
     </>
   );
@@ -43,16 +43,16 @@ function Home() {
     name: "BNP Paribas CIB",
     desc: "Working in the Global Markets team as a frontend developer. I migrated the webapp from Angular to React, working with users to better improve workflows and their experience.",
     title: "6 Month Placement",
-    colour: "green",
+    colour: "text-green-500",
     dates: "April - September 2023",
   });
 
   const imperial = Experience(
     {
       name: "Imperial College London",
-      desc: "Spent each year working on various group projects, gaining experience with a variety of languages and technologies.",
+      desc: "Spent each year working on various group projects, gaining experience with many languages and technologies.",
       title: "Computing (Security and Reliability) MEng",
-      colour: "blue",
+      colour: "text-blue-500",
       dates: "2020 - 2024",
     },
     true
@@ -86,14 +86,14 @@ function Home() {
             </div>
 
             <div className="text-2xl mt-10 opacity-10">
-              Visit me on linkedIn & twitter.
+              Find me on linkedIn & twitter.
             </div>
           </div>
         </div>
       </div>
 
       {/* Experiences */}
-      <div className="min-w-full py-32 px-[200px]">
+      <div className="min-w-full py-32 px-[200px] bg-white">
         <div className="text-5xl">Experiences</div>
 
         <div className="w-full">{myExperiences}</div>
